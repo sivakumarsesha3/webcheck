@@ -1,0 +1,58 @@
+PortfolioVault Windows Quick Start (Copy/Paste)
+=============================================
+
+What to save in your `webcheck` folder
+--------------------------------------
+Keep the full repository contents. At minimum, you need these paths:
+
+- PortfolioVault.sln
+- scripts/build-windows.ps1
+- scripts/build-windows.bat
+- src/PortfolioVault.Host/
+- src/PortfolioVault.Web/
+- src/PortfolioVault.Core/
+- src/PortfolioVault.Infrastructure/
+- src/PortfolioVault.Updater/
+
+If you have all files from this repo, you are good.
+
+PowerShell commands to build EXE (copy/paste)
+---------------------------------------------
+# 1) Go to your local repo path
+cd C:\dev\webcheck
+
+# 2) Check .NET 8 SDK
+ dotnet --version
+
+# 3) Build/publish EXE bundle
+.\scripts\build-windows.ps1
+
+Expected output
+---------------
+- artifacts\PortfolioVault-Windows\PortfolioVault.Host.exe
+- artifacts\PortfolioVault-Windows\PortfolioVault.Updater.exe
+- artifacts\PortfolioVault-Windows\web\
+- artifacts\PortfolioVault-Windows.zip
+
+Run commands (copy/paste)
+-------------------------
+# Set Microsoft login config first
+$env:PV_MSA_CLIENT_ID = "<your-app-registration-client-id>"
+$env:PV_MSA_TENANT_ID = "common"
+
+# Launch (recommended)
+.\artifacts\PortfolioVault-Windows\PortfolioVault.Updater.exe
+
+# OR launch host directly
+.\artifacts\PortfolioVault-Windows\PortfolioVault.Host.exe
+
+If PowerShell blocks script execution
+-------------------------------------
+Use the batch wrapper instead:
+.\scripts\build-windows.bat
+
+Troubleshooting
+---------------
+- If `dotnet` is not found, install .NET 8 SDK and reopen terminal.
+- If Microsoft sign-in fails, confirm `PV_MSA_CLIENT_ID` is correct.
+- If host starts but UI doesn't, verify `artifacts\PortfolioVault-Windows\web\` exists.

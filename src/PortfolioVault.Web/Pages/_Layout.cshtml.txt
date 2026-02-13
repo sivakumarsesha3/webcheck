@@ -1,0 +1,43 @@
+@inherits Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>PortfolioVault</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand ms-2" asp-page="/Dashboard">PortfolioVault</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-page="/Onboarding/Index">Onboarding</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="importsDropdown" role="button" data-bs-toggle="dropdown">Imports</a>
+                    <ul class="dropdown-menu" aria-labelledby="importsDropdown">
+                        <li><a class="dropdown-item" asp-page="/Imports/Icici">ICICI CSV</a></li>
+                        <li><a class="dropdown-item" asp-page="/Imports/Nsdl">NSDL CAS PDF</a></li>
+                        <li><a class="dropdown-item" asp-page="/Imports/Bank">Bank Statements</a></li>
+                        <li><a class="dropdown-item" asp-page="/Imports/Property">Properties</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

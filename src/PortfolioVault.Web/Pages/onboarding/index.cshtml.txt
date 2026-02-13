@@ -1,0 +1,70 @@
+@page
+@model PortfolioVault.Web.Pages.Onboarding.IndexModel
+
+<h2>First-time Onboarding</h2>
+<p>Upload your initial data to set up your portfolios.</p>
+
+<hr />
+
+<h4>1. ICICI Direct CSV</h4>
+<form method="post" enctype="multipart/form-data" asp-page-handler="Icici">
+    <div class="mb-3">
+        <input type="file" name="file" class="form-control" accept=".csv,.xlsx" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload ICICI CSV</button>
+    @if (!string.IsNullOrEmpty(Model.IciciResult))
+    {
+        <p class="mt-2 text-success">@Model.IciciResult</p>
+    }
+</form>
+
+<hr />
+
+<h4>2. NSDL CAS PDF</h4>
+<form method="post" enctype="multipart/form-data" asp-page-handler="Nsdl">
+    <div class="mb-3">
+        <input type="file" name="file" class="form-control" accept=".pdf" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload NSDL CAS</button>
+    @if (!string.IsNullOrEmpty(Model.NsdlResult))
+    {
+        <p class="mt-2 text-success">@Model.NsdlResult</p>
+    }
+</form>
+
+<hr />
+
+<h4>3. Bank Statement PDF</h4>
+<form method="post" enctype="multipart/form-data" asp-page-handler="Bank">
+    <div class="mb-3">
+        <input type="file" name="file" class="form-control" accept=".pdf" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload Bank Statement</button>
+    @if (!string.IsNullOrEmpty(Model.BankResult))
+    {
+        <p class="mt-2 text-success">@Model.BankResult</p>
+    }
+</form>
+
+<hr />
+
+<h4>4. Property (quick add)</h4>
+<form method="post" asp-page-handler="Property">
+    <div class="mb-3">
+        <label class="form-label">Purchase Date</label>
+        <input type="date" name="PurchaseDate" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Description</label>
+        <input type="text" name="Description" class="form-control" placeholder="City / Area / brief info" required />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Purchase Price</label>
+        <input type="number" step="0.01" name="PurchasePrice" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Property</button>
+    @if (!string.IsNullOrEmpty(Model.PropertyResult))
+    {
+        <p class="mt-2 text-success">@Model.PropertyResult</p>
+    }
+</form>

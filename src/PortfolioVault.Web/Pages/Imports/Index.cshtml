@@ -1,0 +1,19 @@
+@page "/Imports"
+@model PortfolioVault.Web.Pages.Imports.IndexModel
+
+<h2>Imports</h2>
+<form method="post" enctype="multipart/form-data">
+    <label>Source</label>
+    <select asp-for="Source">
+        <option>ICICI</option>
+        <option>NSDL</option>
+    </select>
+    <input type="file" asp-for="Upload" />
+    <button type="submit">Parse</button>
+</form>
+
+@if (Model.Result is not null)
+{
+    <h3>Parsed Rows: @Model.Result.ParsedRows.Count</h3>
+    <h3>Unparsed Lines: @Model.Result.UnparsedLines.Count</h3>
+}
