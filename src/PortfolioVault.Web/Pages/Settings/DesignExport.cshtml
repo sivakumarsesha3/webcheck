@@ -1,0 +1,11 @@
+@page "/Settings/DesignExport"
+@model PortfolioVault.Web.Pages.Settings.DesignExportModel
+
+<h2>Design Export</h2>
+<form method="post">
+    <button type="submit">Export design for AI</button>
+</form>
+@if (!string.IsNullOrWhiteSpace(Model.Markdown))
+{
+    <textarea rows="25" cols="130">@Model.Markdown</textarea>
+}

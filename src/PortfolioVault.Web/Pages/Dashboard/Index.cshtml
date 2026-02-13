@@ -1,0 +1,10 @@
+@page "/Dashboard"
+@model PortfolioVault.Web.Pages.Dashboard.IndexModel
+
+<h2>Portfolio Dashboard</h2>
+<p>Net Worth (@Model.BaseCurrency): <strong>@Model.Summary.NetWorthBase.ToString("N2")</strong></p>
+<ul>
+    <li>Cash: @Model.Summary.CashBase.ToString("N2")</li>
+    <li>Securities: @Model.Summary.SecuritiesBase.ToString("N2")</li>
+    <li>Property: @Model.Summary.PropertyBase.ToString("N2")</li>
+</ul>
